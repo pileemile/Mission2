@@ -1,0 +1,79 @@
+CREATE TABLE Association(
+   Nom VARCHAR(150),
+   numIcom INT,
+   PRIMARY KEY(Nom)
+);
+
+CREATE TABLE Interlocuteur(
+   idInterlocuteur VARCHAR(50),
+   Nom VARCHAR(50),
+   Prenom VARCHAR(50),
+   Courriel VARCHAR(150),
+   Tel SMALLINT,
+   Fax SMALLINT,
+   Nom_1 VARCHAR(150) NOT NULL,
+   PRIMARY KEY(idInterlocuteur),
+   UNIQUE(Nom_1),
+   FOREIGN KEY(Nom_1) REFERENCES Association(Nom)
+);
+
+CREATE TABLE Domaine(
+   idDomaine VARCHAR(50),
+   NomDomaine VARCHAR(50),
+   PRIMARY KEY(idDomaine)
+);
+
+CREATE TABLE Status(
+   idStatus VARCHAR(50),
+   Status VARCHAR(50),
+   PRIMARY KEY(idStatus)
+);
+
+CREATE TABLE Formation(
+   idFormation VARCHAR(50),
+   Libelle VARCHAR(50),
+   DateFormation DATE,
+   Horaire TIME,
+   Intervenant VARCHAR(50),
+   Public VARCHAR(50),
+   Objectifs VARCHAR(50),
+   Contenu VARCHAR(50),
+   coût DECIMAL(15,2),
+   idDomaine VARCHAR(50) NOT NULL,
+   PRIMARY KEY(idFormation),
+   FOREIGN KEY(idDomaine) REFERENCES Domaine(idDomaine)
+);
+
+CREATE TABLE Stagiaire(
+   idStagiaire VARCHAR(50),
+   Nom VARCHAR(50),
+   Prenom VARCHAR(50),
+   Adresse VARCHAR(150),
+   codePostal BYTE,
+   Ville VARCHAR(50),
+   email VARCHAR(150),
+   Fonction VARCHAR(50),
+   Nom_1 VARCHAR(150) NOT NULL,
+   idStatus VARCHAR(50) NOT NULL,
+   PRIMARY KEY(idStagiaire),
+   FOREIGN KEY(Nom_1) REFERENCES Association(Nom),
+   FOREIGN KEY(idStatus) REFERENCES Status(idStatus)
+);
+
+CREATE TABLE Session(
+   idSession VARCHAR(50),
+   DateSession DATE,
+   Heure TIME,
+   DateLimiteInscription DATE,
+   idFormation VARCHAR(50) NOT NULL,
+   PRIMARY KEY(idSession),
+   FOREIGN KEY(idFormation) REFERENCES Formation(idFormation)
+);
+
+CREATE TABLE Inscrire(
+   idStagiaire VARCHAR(50),
+   idSession VARCHAR(50),
+   PRIMARY KEY(idStagiaire, idSession),
+   FOREIGN KEY(idStagiaire) REFERENCES Stagiaire(idStagiaire),
+   FOREIGN KEY(idSession) REFERENCES Session(idSession)
+);
