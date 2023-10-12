@@ -49,7 +49,7 @@ CREATE TABLE Stagiaire(
    Nom VARCHAR(50),
    Prenom VARCHAR(50),
    Adresse VARCHAR(150),
-   codePostal BYTE,
+   codePostal INTEGER(5),
    Ville VARCHAR(50),
    email VARCHAR(150),
    Fonction VARCHAR(50),
