@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.box {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 400px;
+}
+
+.boxImg {
+    /* Ajoute ici ta propriété pour l'image de fond si nécessaire */
+}
+
+.boxForm {
+    padding: 20px;
+}
+
+.input {
+    margin-bottom: 20px;
+}
+
+.inputField {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.inputLabel {
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    padding: 10px;
+    transform-origin: 0 0;
+    transition: transform 0.2s ease-out, color 0.2s ease-out;
+}
+
+.inputField:focus + .inputLabel,
+.inputField:valid + .inputLabel {
+    transform: translateY(-24px) scale(0.8);
+    color: #3498db;
+}
+
+.action {
+    text-align: center;
+}
+
+.actionButton {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.actionButton:hover {
+    background-color: #2980b9;
+}
+
+.boxInfo {
+    text-align: center;
+    padding: 10px;
+}
+
+.boxInfo a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.boxInfo a:hover {
+    text-decoration: underline;
+}
+inputcheckbox{
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    padding: 10px;
+    transform-origin: 0 0;
+    transition: transform 0.2s ease-out, color 0.2s ease-out;
+}

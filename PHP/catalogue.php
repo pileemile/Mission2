@@ -13,13 +13,23 @@
         <label for="">Choisir un domaine</label>
         <select name="domaine" id="domaine">
             <option value="*">--- Choisir un domaine ---</option>
-            
+            <?php
+                include("includes/connectionbdd.php");
 
-            <!-- <option value="gestion">Gestion</option>
-            <option value="informatique">Informatique</option>
-            <option value="developpementDurable">Développement durable</option>
-            <option value="secourisme">Secourisme</option>
-            <option value="communication">Communication</option> -->
+                $reqSQL = "SELECT idDomaine, NomDomaine FROM domaine";
+                $result = $connexion->query($reqSQL);
+                $ligne = $result->fetch();
+
+                while ($ligne != false){
+                    $idDomaine = $ligne['idDomaine'];
+                    $domaine = $ligne['NomDomaine'];
+
+                    echo"<option value='$idDomaine'>$domaine</option>";
+
+                    $ligne = $result->fetch();
+                }
+            ?>
+
         </select>
         <br>
         <label for="">Choisir une formation</label>
@@ -36,6 +46,14 @@
             <option value="">Communiquer avec la presse</option>
             <option value="">Langues étrangères</option>
         </select>
+
+        <label for="">Date</label>
+        <input type="date" name="date" id="date">
+        <br>
+        <label for="">Horaire</label>
+        <input type="time" name="horaire" id="horaire">
+        <br>
+        <label for="">Lieu</label>
 
 
     </form>
