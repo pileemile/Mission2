@@ -1,5 +1,5 @@
 # Mission2
-[https://prod.liveshare.vsengsaas.visualstudio.com/join?5F8E672D8AAAAB4F2EE9DCB089B1D5FE663A](https://prod.liveshare.vsengsaas.visualstudio.com/join?5F8E672D8AAAAB4F2EE9DCB089B1D5FE663A)
+https://prod.liveshare.vsengsaas.visualstudio.com/join?1370EAA7F59883928C45AB6708259EB6F4CE
 CREATE TABLE connection(
    id INT,
    idInterlocuteur INT,
