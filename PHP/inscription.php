@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/inscription.css">
+    <link rel="stylesheet" href="../css/accueil.css">
     <title>Inscription</title>
 </head>
-<body>
+<header>
     <h1>Inscription</h1>
+    <nav>
+        <a href="inscription.php"> inscription </a>
+        <a href="catalogue.php"> Le catalogue</a>
+    </nav>
+</header>
+<body>
 
-    <form action="/includes/inscription.php" method="post">
+    <div class="formation">
+        <form action="/includes/inscription.php" method="post">
 
         <h3>-> Les coordonées de votre association </h3>
         <br><br>
@@ -34,7 +41,7 @@
         <input type="tel" name="tel" id="tel">
         <label for="">Fax</label>
         <input type="tel" name="fax" id="fax">
-        
+
         <h3>-> Le stagiaire</h3>
         <br><br>
         <label for="">Nom</label>
@@ -64,7 +71,11 @@
         <label for="">Fonction</label>
         <input type="text" name="Fonction" id="fonction">
 
-    </form>
-
+        </form>
+    </div>
+   
+    <footer>
+        &copy; inscription
+    </footer>
 </body>
 </html>

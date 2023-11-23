@@ -1,5 +1,5 @@
 /* Reset des marges et des paddings par défaut */
-body, h1, h2, h3, p, label, input, form, nav {
+body, h1, h2, p, nav {
     margin: 0;
     padding: 0;
 }
@@ -41,51 +41,6 @@ nav a {
 /* Changement de style au survol des liens */
 nav a:hover {
     background-color: #777;
-}
-
-.formation{
-    display: flex;
-    justify-content: center;
-}
-
-/* Style du formulaire */
-form {
-    display: flex;
-    max-width: 800px;
-    margin: 2em auto;
-    padding: 1em;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Style des étiquettes (labels) */
-label {
-    display: block;
-    margin-top: 10px;
-}
-
-/* Style des champs de saisie (input) */
-input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-/* Style des boutons radio */
-input[type="radio"] {
-    margin-right: 5px;
-}
-
-/* Changement de style au survol des boutons radio */
-input[type="radio"]:hover {
-    background-color: #ddd;
-}
-
-/* Style des titres de section */
-h3 {
-    margin-top: 20px;
 }
 
 /* Style du pied de page */

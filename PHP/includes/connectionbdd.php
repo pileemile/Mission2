@@ -1,14 +1,15 @@
 <?php
-    //Constantes connexion BDD
-    $login = "root";
-    $password = "";
+    // Définitions de constantes pour la connexion à MySQL
+	$hote="localhost";
+	$login="root";
+	$mdp="";
+	$nombd="mission2_ap";
 
-    //Connexion BDD
-    try{
-        $connexion= new PDO('mysql:host=localhost;dbname=mission2_ap', $login, $password);
-        
-        
-    }catch(Exception $e){
-        echo 'Connexion échouée <br>';
+    // Connection au serveur
+	try {
+        $connexion = new PDO("mysql:host=$hote;dbname=$nombd;charset=utf8",$login,$mdp);
+        echo"ok";
+    } catch ( Exception $e ) { 
+        die ("\n Connexion à '$hote' impossible : ".$e->getMessage());
     }
 ?>

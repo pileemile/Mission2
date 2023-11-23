@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Récupération du résultat
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    var_dump ($user);
+    //var_dump ($user);
     
     // Vérification du résultat
     if ($user) {
@@ -33,13 +33,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vous pouvez accéder aux valeurs de l'utilisateur
             $_SESSION['nom'] = $user['login']; // Stockage du nom dans la variable de session
             $_SESSION['prenom'] = $user['mdp']; // Stockage du prénom dans la variable de session
+            $_SESSION['interlocuteur']=$user['idInterlocuteur'];
+            $_SESSION['status']=$user['idStatus'];
             $_SESSION['connecte'] = true;
             if(isset($_POST['salarier'])){
-                header("Location: inscription.html");
+                header("Location: catalogue.php");
                 exit;
             }
             elseif(isset($_POST['inter'])){
-                header("Location: #");
+                header("Location: index.php");
                 exit;
 
             }
