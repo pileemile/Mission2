@@ -17,91 +17,80 @@ session_start();
     
        
     <form method="post" id="domaineForm" action="includes/insertcatalogue.php">
-        <label for="domaine">Choisir un domaine</label>
-        <select name="domaine" id="domaine" onchange="submitForm()">
-        <option value="*">--- Choisir un domaine ---</option>
-            <option value="gestion" name="gestion">Gestion</option>
-            <option value="info">informatique</option>
-            <option value="DD">Developpement Durable</option>
-            <option value="secour">Secourisme</option>
-            <option value="Com">Communication</option>
-        </select>
-        
-    
-    <script>
-  function submitForm() {
-      document.getElementById("domaineForm").submit();
-  }
-</script>
+    <label for="">Choisir un domaine</label>
+    <div class="radio-group">
+            <label for="gestion1"><input type="radio" name="gestion" id="gestion1"> Gestion </label>
+            <label for="informatique1"><input type="radio" name="informatique" id="informatique1"> informatique </label>
+            <label for="developpement1"><input type="radio" name="developpement" id="developpement1"> développement durable</label>
+            <label for="Secourisme1"><input type="radio" name="Secourisme" id="Secourisme1"> Secourisme</label>
+            <label for="Communication1"><input type="radio" name="Communication" id="Communication1"> Communication</label>
+        </div>
 <br>  
        <label for="">Choisir une formation</label>
-            <select name="formation" id="formation">
-            <option value="*">--- Choisir une formation ---</option>
-        <?php     
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' &&  isset($_POST['domaine'])){
-                $domaine = $_POST['domaine'];
-                $_SESSION['domaine'] = $domaine; 
-                switch ($domaine) {
-                    case 'gestion':
-                        echo '<option value="info">Soirée d\'information sur la convention collective nationale du sport</option>';
-                        echo '<option value="info">Actualisation des connaissances sur la convention collective nationale du sport et la responsabilité des dirigeants.</option>';
-                        echo '<option value="info">Comptabilité</option> ';
-                        echo '<option value="info"> Recherche de partenariat</option>'; 
-                        break;
-                    case 'info':
-                        echo '<option value="info"> Outlook Niveau 1</option>';
-                        echo '<option value="info">Outlook Niveau 2</option>';
-                        echo '<option value="info">Power point Niveau 2</option>';
-                        echo '<option value="info">Photoshop Niveau 1 </option>';
-                        echo '<option value="info">Photoshop Niveau 2 </option>';   
-                        break;
-        
-                    case 'DD' : 
-                        echo '<option value="info">Organiser une manifestation éco responsable</option>';
-                        break;
-                    case 'secour' :
-                         echo '<option value="info">Prévention et secours civique (PSC)</option>';
-                         echo '<option value="info">Bonnes pratiques et premiers secours</option>';   
-                         break; 
-                    case 'Com': 
-                        echo '<option value="info">Conduite de réunion</option>';
-                        echo '<option value="info">Communiquer avec la presse</option>';
-                        echo '<option value="info">Langues étrangères</option>';   
-                        break;
-    }
-}
-    ?>         
-            </select>
-            <label for=""></label>
-                    <label for="">Date</label>
-                    <input type="date" name="date" id="date">
-                    <br>
-                    <label for="">Horaire</label>
-                    <input type="time" name="horaire" id="horaire">
-                    <br>
-                    <label for="">Lieu</label>
-                    <input type="text" name="lieu" id="lieu">
-                    <br>
-                    <label for="">Intervenant</label>
-                    <input type="text" name="intervenant" id="intervenant">
-                    <br>
-                    <label for="">Public</label>
-                    <input type="text" name="public" id="public">
-                    <br>
-                    <label for="">Objectifs</label>
-                    <input type="text" name="objectifs" id="objectifs">
-                    <br>
-                    <label for="">Contenu</label>
-                    <input type="text" name="contenu" id="contenu">
-                    <br>
-                    <label for="">Coût</label>
-                    <input type="number" name="cout" id="cout">
-                    <br>
-                    <label for="">Date limite dinscription</label>
-                    <input type="date" name="dateLimite" id="dateLimite">
-
-                    <br>
-                    <input type="submit" value="Valider">
+           <div class="choix_formation">
+                <div class="gestion">
+                    <label for="">  Formation gestion </label>
+                    <label for=""><input type="radio" name="info_collec" id="">Soirée d'information sur la convention collective nationale du sport</label>
+                    <label for=""><input type="radio" name="connaissance" id="">Actualisation des connaissances sur la convention collective nationale du sport et la responsabilité des dirigeants.</label>
+                    <label for=""><input type="radio" name="compta" id="">Comptabilité</label>
+                    <label for=""><input type="radio" name="partenariat" id="">Recherche de partenariat</label>
+                </div>
+                <div class="info">
+                <label for="">  Formation informatique </label>
+                    <label for=""><input type="radio" name="out1" id="">Outlook Niveau 1.</label>
+                    <label for=""><input type="radio" name="" id="">Outlook Niveau 2.</label>
+                    <label for=""><input type="radio" name="PP2" id="">Power point Niveau 2.</label>
+                    <label for=""><input type="radio" name="photo1" id="">Photoshop Niveau 1</label>
+                    <label for=""><input type="radio" name="photo2" id="">Photoshop Niveau 1</label>
+                </div>
+                <div class="dev">
+                    <label for="">  Formation developpement durable </label>
+                    <label for=""><input type="radio" name="eco" id="">Organiser une manifestation éco responsable</label>
+                </div>
+                <div class="secourisme">
+                    <label for="">  Formation secourisme </label>
+                    <label for=""><input type="radio" name="psc" id=""> Prévention et secours civique (PSC).</label>
+                    <label for=""><input type="radio" name="premierSe" id="">Bonnes pratiques et premiers secours.</label>
+                </div>
+                <div class="Communication">
+                    <label for="">  Formation Communication </label>
+                    <label for=""><input type="radio" name="reu" id="">Conduite de réunion.</label>
+                    <label for=""><input type="radio" name="presse" id="">Communiquer avec la presse</label>
+                    <label for=""><input type="radio" name="etrangere" id="">Langues étrangères.</label>
+                </div>
+                
+           </div>
+            <div class="date-section">
+                <label for="date">Date</label>
+                <input type="date" name="date" id="date">
+                <br>
+                <label for="horaire">Horaire</label>
+                <input type="time" name="horaire" id="horaire">
+                <br>
+                <label for="lieu">Lieu</label>
+                <input type="text" name="lieu" id="lieu">
+                <br>
+                <label for="intervenant">Intervenant</label>
+                <input type="text" name="intervenant" id="intervenant">
+                <br>
+                <label for="public">Public</label>
+                <input type="text" name="public" id="public">
+                <br>
+                <label for="objectifs">Objectifs</label>
+                <input type="text" name="objectifs" id="objectifs">
+                <br>
+                <label for="contenu">Contenu</label>
+                <input type="text" name="contenu" id="contenu">
+                <br>
+                <label for="cout">Coût</label>
+                <input type="number" name="cout" id="cout">
+                <br>
+                <label for="dateLimite">Date limite d'inscription</label>
+                <input type="date" name="dateLimite" id="dateLimite">
+            </div>
+             <br>
+            <input type="submit" value="Valider">
+                   
         </form>
        
     </div>

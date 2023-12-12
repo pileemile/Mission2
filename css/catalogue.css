@@ -24,8 +24,10 @@ label {
     margin-bottom: 8px;
 }
 
-select,
-input {
+.date-section label,
+.date-section input,
+.date-section select,
+.date-section textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 16px;
@@ -46,4 +48,34 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #45a049;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: row;
+}
+
+.radio-group label,
+.radio-group input {
+    margin-right: 10px;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Additional styles for better form layout */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-group {
+    flex-direction: column;
+}
+
+/* Adjustments for better spacing */
+.date-section label {
+    margin-top: 10px;
 }
