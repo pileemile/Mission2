@@ -11,7 +11,7 @@ h1 {
 }
 
 .formation {
-    max-width: 600px;
+    max-width: 800px;
     margin: 20px auto;
     background-color: #fff;
     padding: 20px;
@@ -52,16 +52,15 @@ input[type="submit"]:hover {
 
 .radio-group {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .radio-group label,
 .radio-group input {
-    margin-right: 10px;
-    padding: 10px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    padding: 10px;
     box-sizing: border-box;
 }
 
@@ -71,11 +70,48 @@ form {
     flex-direction: column;
 }
 
-.radio-group {
-    flex-direction: column;
-}
-
 /* Adjustments for better spacing */
 .date-section label {
     margin-top: 10px;
+}
+.choix_formation {
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.gestion label,
+.gestion input{
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.gestion,
+.info,
+.dev,
+.secourisme,
+.Communication {
+    flex: 1 1 calc(20% - 20px);
+    margin-right: 20px;
+}
+
+.gestion,
+.info,
+.dev,
+.secourisme,
+.Communication label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.gestion input,
+.info input,
+.dev input,
+.secourisme input,
+.Communication input {
+    margin-right: 5px;
 }
