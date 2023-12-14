@@ -37,11 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['status']=$user['idStatus'];
             $_SESSION['connecte'] = true;
             if(isset($_POST['salarier'])){
+                
+                $_SESSION['salarier'] = $_POST['salarier'];
                 header("Location: catalogue.php");
                 exit;
             }
             elseif(isset($_POST['inter'])){
-                header("Location: index.php");
+                $_SESSION['inter'] = $_POST['inter'];
+                header("Location: ../catalogue.php");
                 exit;
 
             }

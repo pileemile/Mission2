@@ -82,7 +82,15 @@ form {
     box-sizing: border-box;
 }
 .gestion label,
-.gestion input{
+.gestion input,
+.info label,
+.info input,
+.dev label,
+.dev input,
+.secourisme label,
+.secourisme input,
+.Communication label,
+.Communication input{
     margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;

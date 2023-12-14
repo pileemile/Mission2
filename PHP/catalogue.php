@@ -1,5 +1,8 @@
 <?php
 session_start(); 
+if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] !== true){
+    header("Location: connection.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -9,6 +12,8 @@ session_start();
     <title>Catalogue</title>
     <link rel="stylesheet" href="../css/catalogue.css">
 </head>
+
+ <?php  include 'includes/navBar.php'; ?>
 <body>
     <h1>Creer une formation</h1>
 
@@ -30,7 +35,7 @@ session_start();
            <div class="choix_formation">
                 <div class="gestion">
                     <label for="">  Formation gestion </label>
-                    <label for=""><input type="radio" name="info_collec" id="">Soirée d'information sur la convention collective nationale du sport</label>
+                    <label for=""><input type="radio" name="info_collec" id="">Soirée d'info</label>
                     <label for=""><input type="radio" name="connaissance" id="">Actualisation des connaissances sur la convention collective nationale du sport et la responsabilité des dirigeants.</label>
                     <label for=""><input type="radio" name="compta" id="">Comptabilité</label>
                     <label for=""><input type="radio" name="partenariat" id="">Recherche de partenariat</label>
@@ -38,10 +43,10 @@ session_start();
                 <div class="info">
                 <label for="">  Formation informatique </label>
                     <label for=""><input type="radio" name="out1" id="">Outlook Niveau 1.</label>
-                    <label for=""><input type="radio" name="" id="">Outlook Niveau 2.</label>
+                    <label for=""><input type="radio" name="out2" id="">Outlook Niveau 2.</label>
                     <label for=""><input type="radio" name="PP2" id="">Power point Niveau 2.</label>
                     <label for=""><input type="radio" name="photo1" id="">Photoshop Niveau 1</label>
-                    <label for=""><input type="radio" name="photo2" id="">Photoshop Niveau 1</label>
+                    <label for=""><input type="radio" name="photo2" id="">Photoshop Niveau 2</label>
                 </div>
                 <div class="dev">
                     <label for="">  Formation developpement durable </label>

@@ -8,6 +8,8 @@
 </head>
 <body>
 
+    <?php include("includes/navBar.php"); ?>
+
     <h1>Modifier une formation</h1>
 
     <div class="modifier">
@@ -83,31 +85,34 @@
         }
     ?>
 
-    <form action="includes/insertmodification.php" method="post">
-        <input type="hidden" name="idFormation" value="<?php echo $idFormation ?>">
-        <label for="dateFormation">Date de formation</label>
-        <input type="date" name="dateFormation" value="<?php echo $dateFormation ?>">
-        <br>
-        <label for="intervenant">Intervenant</label>
-        <input type="text" name="intervenant" value="<?php echo $intervenant ?>">
-        <br>
-        <label for="public">Public</label>
-        <input type="text" name="public" value="<?php echo $public ?>">
-        <br>
-        <label for="objectifs">Objectifs</label>
-        <input type="text" name="objectifs" value="<?php echo $objectifs ?>">
-        <br>
-        <label for="contenu">Contenu</label>
-        <input type="text" name="contenu" value="<?php echo $contenu ?>">
-        <br>
-        <label for="cout">Coût</label>
-        <input type="number" name="cout" value="<?php echo $cout ?>">
-        <br>
-        <input type="submit" value="Modifier" name="modifier">
-    </form>
-
+    <?php
+        if(isset($_POST['ok'])){
+            echo'<form action="includes/insertmodification.php" method="post">';
+            echo'<input type="hidden" name="idFormation" value="<?php echo $idFormation ?>">';
+            
+            echo'<label for="dateFormation">Date de formation</label>';
+            echo'<input type="date" name="dateFormation" value="<?php echo $dateFormation ?>">';
+            echo'<br>';
+            echo'<label for="intervenant">Intervenant</label>';
+            echo'<input type="text" name="intervenant" value="<?php echo $intervenant ?>">';
+            echo'<br>';
+            echo'<label for="public">Public</label>';
+            echo'<input type="text" name="public" value="<?php echo $public ?>">';
+            echo'<br>';
+            echo'<label for="objectifs">Objectifs</label>';
+            echo'<input type="text" name="objectifs" value="<?php echo $objectifs ?>">';
+            echo'<br>';
+            echo'<label for="contenu">Contenu</label>';
+            echo'<input type="text" name="contenu" value="<?php echo $contenu ?>">';
+            echo'<br>';
+            echo'<label for="cout">Coût</label>';
+            echo'<input type="number" name="cout" value="<?php echo $cout ?>">';
+            echo'<br>';
+            echo'<input type="submit" value="Modifier" name="modifier">';
+            echo'</form>';
+        }
+    ?>
     
-
 
 </body>
 </html>
