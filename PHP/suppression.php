@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,19 +24,43 @@
                 <option value="*">--- Choisir une formation ---</option>
 
                 <?php 
-                    include("includes/connectionbdd.php");
-
-                    $reqSQL = "SELECT idFormation, Libelle FROM formation";
-                    $result = $connexion->query($reqSQL);
-                    $ligne = $result->fetch();
-
-                    while ($ligne != false){
-                        $idFormation = $ligne['idFormation'];
-                        $Libelle = $ligne['Libelle'];
-
-                        echo"<option value='$idFormation'>$Libelle</option>";
-
+                    if(isset($_SESSION['inter'])){
+                        include("includes/connectionbdd.php");
+    
+                        $reqSQL = "SELECT idFormation, Libelle FROM formation";
+                        $result = $connexion->query($reqSQL);
                         $ligne = $result->fetch();
+    
+                        while ($ligne != false){
+                            $idFormation = $ligne['idFormation'];
+                            $Libelle = $ligne['Libelle'];
+    
+                            echo"<option value='$idFormation'>$Libelle</option>";
+    
+                            $ligne = $result->fetch();
+                        }
+                    }
+                    elseif(isset($_SESSION['salarier'])){
+                        include("includes/connectionbdd.php");
+                        $mail = $_SESSION['nom'];
+                        $reqSQL = "SELECT idFormation, Libelle, nomStagiaire FROM formation WHERE nomStagiaire = '$mail'";
+                        $result = $connexion->query($reqSQL);
+                        $ligne = $result->fetch();
+    
+                        while ($ligne != false){
+                            if($mail === $ligne['nomStagiaire']){
+                                $idFormation = $ligne['idFormation'];
+                                $Libelle = $ligne['Libelle'];
+    
+                            echo"<option value='$idFormation'>$Libelle</option>";
+    
+                            $ligne = $result->fetch();
+                            }
+                            
+                        }
+                    }
+                    else{
+                        echo"aucune formation";
                     }
                 ?>
             </select>
@@ -65,6 +92,7 @@
                 echo "<input type='submit' value='Confirmer la suppression' name='confirmer_suppression'>";
                 echo "</form>";
             }
+            
         ?>
     </div>
     

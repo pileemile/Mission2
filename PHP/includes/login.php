@@ -31,15 +31,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Le mot de passe correspond
 
             // Vous pouvez accéder aux valeurs de l'utilisateur
-            $_SESSION['nom'] = $user['login']; // Stockage du nom dans la variable de session
-            $_SESSION['prenom'] = $user['mdp']; // Stockage du prénom dans la variable de session
+            $_SESSION['nom'] = $login; // Stockage du nom dans la variable de session
             $_SESSION['interlocuteur']=$user['idInterlocuteur'];
             $_SESSION['status']=$user['idStatus'];
             $_SESSION['connecte'] = true;
             if(isset($_POST['salarier'])){
                 
                 $_SESSION['salarier'] = $_POST['salarier'];
-                header("Location: catalogue.php");
+                header("Location: ../catalogue.php");
                 exit;
             }
             elseif(isset($_POST['inter'])){

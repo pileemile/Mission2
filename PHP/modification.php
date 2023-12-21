@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,6 +24,7 @@
                 <option value="*">--- Choisir une formation ---</option>
 
                 <?php 
+                if(isset($_SESSION['inter'])){
                     include("includes/connectionbdd.php");
 
                     $reqSQL = "SELECT idFormation, Libelle FROM formation";
@@ -35,6 +39,29 @@
 
                         $ligne = $result->fetch();
                     }
+                }
+                elseif(isset($_SESSION['salarier'])){
+                    include("includes/connectionbdd.php");
+                    $mail = $_SESSION['nom'];
+                    $reqSQL = "SELECT idFormation, Libelle, nomStagiaire FROM formation WHERE nomStagiaire = '$mail'";
+                    $result = $connexion->query($reqSQL);
+                    $ligne = $result->fetch();
+
+                    while ($ligne != false){
+                        if($mail === $ligne['nomStagiaire']){
+                            $idFormation = $ligne['idFormation'];
+                            $Libelle = $ligne['Libelle'];
+
+                        echo"<option value='$idFormation'>$Libelle</option>";
+
+                        $ligne = $result->fetch();
+                        }
+                        
+                    }
+                }
+                else{
+                    echo"aucune formation";
+                }
                 ?>
             </select>
             <input type="submit" value="OK" name="ok">
@@ -86,30 +113,30 @@
     ?>
 
     <?php
-        if(isset($_POST['ok'])){
-            echo'<form action="includes/insertmodification.php" method="post">';
-            echo'<input type="hidden" name="idFormation" value="<?php echo $idFormation ?>">';
-            
-            echo'<label for="dateFormation">Date de formation</label>';
-            echo'<input type="date" name="dateFormation" value="<?php echo $dateFormation ?>">';
-            echo'<br>';
-            echo'<label for="intervenant">Intervenant</label>';
-            echo'<input type="text" name="intervenant" value="<?php echo $intervenant ?>">';
-            echo'<br>';
-            echo'<label for="public">Public</label>';
-            echo'<input type="text" name="public" value="<?php echo $public ?>">';
-            echo'<br>';
-            echo'<label for="objectifs">Objectifs</label>';
-            echo'<input type="text" name="objectifs" value="<?php echo $objectifs ?>">';
-            echo'<br>';
-            echo'<label for="contenu">Contenu</label>';
-            echo'<input type="text" name="contenu" value="<?php echo $contenu ?>">';
-            echo'<br>';
-            echo'<label for="cout">Coût</label>';
-            echo'<input type="number" name="cout" value="<?php echo $cout ?>">';
-            echo'<br>';
-            echo'<input type="submit" value="Modifier" name="modifier">';
-            echo'</form>';
+        if (isset($_POST['ok'])) {
+            echo '<form action="includes/insertmodification.php" method="post">';
+            echo '<input type="hidden" name="idFormation" value="' . $idFormation . '">';
+
+            echo '<label for="dateFormation">Date de formation</label>';
+            echo '<input type="date" name="dateFormation" value="' . $dateFormation . '">';
+            echo '<br>';
+            echo '<label for="intervenant">Intervenant</label>';
+            echo '<input type="text" name="intervenant" value="' . $intervenant . '">';
+            echo '<br>';
+            echo '<label for="public">Public</label>';
+            echo '<input type="text" name="public" value="' . $public . '">';
+            echo '<br>';
+            echo '<label for="objectifs">Objectifs</label>';
+            echo '<input type="text" name="objectifs" value="' . $objectifs . '">';
+            echo '<br>';
+            echo '<label for="contenu">Contenu</label>';
+            echo '<input type="text" name="contenu" value="' . $contenu . '">';
+            echo '<br>';
+            echo '<label for="cout">Coût</label>';
+            echo '<input type="number" name="cout" value="' . $cout . '">';
+            echo '<br>';
+            echo '<input type="submit" value="Modifier" name="modifier">';
+            echo '</form>';
         }
     ?>
     
