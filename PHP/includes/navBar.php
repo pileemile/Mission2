@@ -11,6 +11,7 @@
         <?php if(isset($_SESSION['inter']) && $_SESSION['inter']) {
             echo '<a href="historiser.php">Historique</a>';
         } ?>
+        <a href="consulter.php">Consulter catalogue</a>
         <a href="catalogue.php">Créer catalogue</a>
         <a href="modification.php">Modifier catalogue</a>
         <a href="suppression.php">Supprimer catalogue</a>

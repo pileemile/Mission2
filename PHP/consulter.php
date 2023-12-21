@@ -1,8 +1,5 @@
 <?php
 session_start();
-if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] !== true){
-    header("Location: connection.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,19 +7,19 @@ if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] !== true){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/modification.css">
-    <title>Modifier une formation</title>
+    <title>Consulter les formations</title>
 </head>
 <body>
 
     <?php include("includes/navBar.php"); ?>
 
-    <h1>Modifier une formation</h1>
+    <h1>Consulter les formations</h1>
 
     <div class="modifier">
 
         <form action="" method="post">
 
-            <label for="formation">Choisir une formation à modifier</label>
+            <label for="formation">Formations</label>
             <select name="formation" id="formation">
                 <option value="*">--- Choisir une formation ---</option>
 
@@ -30,7 +27,7 @@ if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] !== true){
                 if(isset($_SESSION['inter'])){
                     include("includes/connectionbdd.php");
                     $dateAujourdhui = date('Y-m-d');
-                    $reqSQL = "SELECT idFormation, Libelle FROM formation WHERE DateFormation >= '$dateAujourdhui'";
+                    $reqSQL = "SELECT idFormation, Libelle FROM formation";
                     $result = $connexion->query($reqSQL);
                     $ligne = $result->fetch();
 
@@ -47,7 +44,7 @@ if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] !== true){
                     include("includes/connectionbdd.php");
                     $dateAujourdhui = date('Y-m-d');
                     $mail = $_SESSION['nom'];
-                    $reqSQL = "SELECT idFormation, Libelle, nomStagiaire FROM formation WHERE nomStagiaire = '$mail' AND  DateFormation >= '$dateAujourdhui'";
+                    $reqSQL = "SELECT idFormation, Libelle, nomStagiaire FROM formation";
                     $result = $connexion->query($reqSQL);
                     $ligne = $result->fetch();
 
@@ -139,14 +136,8 @@ if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] !== true){
             echo '<label for="cout">Coût</label>';
             echo '<input type="number" name="cout" value="' . $cout . '">';
             echo '<br>';
-            echo '<input type="submit" value="Modifier" name="modifier">';
             echo '</form>';
         }
-    ?>
-    
-    <?php
-    $dateAujourdhui = date('Y-m-d');
-    echo 'La date d\'aujourd\'hui est : ' . $dateAujourdhui;
     ?>
 
 </body>
