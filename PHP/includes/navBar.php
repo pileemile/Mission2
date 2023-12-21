@@ -9,7 +9,7 @@
     <div class="navbar">
         <a href="#home">Accueil</a>
         <?php if(isset($_SESSION['inter']) && $_SESSION['inter']) {
-            echo '<a href="../catalogue.php">oui catalogue</a>';
+            echo '<a href="historiser.php">Historique</a>';
         } ?>
         <a href="catalogue.php">Créer catalogue</a>
         <a href="modification.php">Modifier catalogue</a>

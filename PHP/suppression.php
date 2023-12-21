@@ -26,8 +26,8 @@
                 <?php 
                     if(isset($_SESSION['inter'])){
                         include("includes/connectionbdd.php");
-    
-                        $reqSQL = "SELECT idFormation, Libelle FROM formation";
+                        $dateAujourdhui = date('Y-m-d');
+                        $reqSQL = "SELECT idFormation, Libelle FROM formation WHERE DateFormation >= '$dateAujourdhui'";
                         $result = $connexion->query($reqSQL);
                         $ligne = $result->fetch();
     
@@ -42,8 +42,9 @@
                     }
                     elseif(isset($_SESSION['salarier'])){
                         include("includes/connectionbdd.php");
+                        $dateAujourdhui = date('Y-m-d');
                         $mail = $_SESSION['nom'];
-                        $reqSQL = "SELECT idFormation, Libelle, nomStagiaire FROM formation WHERE nomStagiaire = '$mail'";
+                        $reqSQL = "SELECT idFormation, Libelle, nomStagiaire FROM formation WHERE nomStagiaire = '$mail' AND  DateFormation >= '$dateAujourdhui'";
                         $result = $connexion->query($reqSQL);
                         $ligne = $result->fetch();
     

@@ -13,13 +13,13 @@ session_start();
 
     <?php include("includes/navBar.php"); ?>
 
-    <h1>Modifier une formation</h1>
+    <h1>Historiques des formations</h1>
 
     <div class="modifier">
 
         <form action="" method="post">
 
-            <label for="formation">Choisir une formation à modifier</label>
+            <label for="formation">Formations</label>
             <select name="formation" id="formation">
                 <option value="*">--- Choisir une formation ---</option>
 
@@ -27,7 +27,7 @@ session_start();
                 if(isset($_SESSION['inter'])){
                     include("includes/connectionbdd.php");
                     $dateAujourdhui = date('Y-m-d');
-                    $reqSQL = "SELECT idFormation, Libelle FROM formation WHERE DateFormation >= '$dateAujourdhui'";
+                    $reqSQL = "SELECT idFormation, Libelle FROM formation WHERE DateFormation < '$dateAujourdhui'";
                     $result = $connexion->query($reqSQL);
                     $ligne = $result->fetch();
 
@@ -44,7 +44,7 @@ session_start();
                     include("includes/connectionbdd.php");
                     $dateAujourdhui = date('Y-m-d');
                     $mail = $_SESSION['nom'];
-                    $reqSQL = "SELECT idFormation, Libelle, nomStagiaire FROM formation WHERE nomStagiaire = '$mail' AND  DateFormation >= '$dateAujourdhui'";
+                    $reqSQL = "SELECT idFormation, Libelle, nomStagiaire FROM formation WHERE nomStagiaire = '$mail' AND  DateFormation < '$dateAujourdhui'";
                     $result = $connexion->query($reqSQL);
                     $ligne = $result->fetch();
 
@@ -136,15 +136,11 @@ session_start();
             echo '<label for="cout">Coût</label>';
             echo '<input type="number" name="cout" value="' . $cout . '">';
             echo '<br>';
-            echo '<input type="submit" value="Modifier" name="modifier">';
             echo '</form>';
         }
     ?>
     
-    <?php
-    $dateAujourdhui = date('Y-m-d');
-    echo 'La date d\'aujourd\'hui est : ' . $dateAujourdhui;
-    ?>
+
 
 </body>
 </html>
