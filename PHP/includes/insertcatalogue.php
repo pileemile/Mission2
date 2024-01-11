@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     var_dump($domaine);
     var_dump($formation);
 
-    $reqSQL = "INSERT INTO formation (`idFormation`, `Libelle`, `DateFormation`, `Horaire`, `Intervenant`, `Public`, `Objectifs`, `Contenu`, `coût`, `idDomaine`,`nomStagiaire) VALUES (NULL, '$libelle', '$date', '$horaire', '$intervenant', '$public', '$objectifs', '$contenu', '$cout','$idDomaine','$email')";
+    $reqSQL = "INSERT INTO formation (`idFormation`, `Libelle`, `DateFormation`, `Horaire`, `Intervenant`, `Public`, `Objectifs`, `Contenu`, `coût`, `idDomaine`,`nomStagiaire`) VALUES (NULL, '$libelle', '$date', '$horaire', '$intervenant', '$public', '$objectifs', '$contenu', '$cout','$idDomaine','$email')";
 
     $connexion->exec($reqSQL);
     echo "Insertion réussie.";
