@@ -1,8 +1,5 @@
 <?php
     session_start();
-    if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] !== true){
-        header("Location: connection.php");
-    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -29,8 +26,8 @@
                 <?php 
                     if(isset($_SESSION['inter'])){
                         include("includes/connectionbdd.php");
-                        $dateAujourdhui = date('Y-m-d');
-                        $reqSQL = "SELECT idFormation, Libelle FROM formation WHERE DateFormation >= '$dateAujourdhui'";
+    
+                        $reqSQL = "SELECT idFormation, Libelle FROM formation";
                         $result = $connexion->query($reqSQL);
                         $ligne = $result->fetch();
     
@@ -45,9 +42,8 @@
                     }
                     elseif(isset($_SESSION['salarier'])){
                         include("includes/connectionbdd.php");
-                        $dateAujourdhui = date('Y-m-d');
                         $mail = $_SESSION['nom'];
-                        $reqSQL = "SELECT idFormation, Libelle, nomStagiaire FROM formation WHERE nomStagiaire = '$mail' AND  DateFormation >= '$dateAujourdhui'";
+                        $reqSQL = "SELECT idFormation, Libelle, nomStagiaire FROM formation WHERE nomStagiaire = '$mail'";
                         $result = $connexion->query($reqSQL);
                         $ligne = $result->fetch();
     
@@ -96,7 +92,6 @@
                 echo "<input type='submit' value='Confirmer la suppression' name='confirmer_suppression'>";
                 echo "</form>";
             }
-            
         ?>
     </div>
     
