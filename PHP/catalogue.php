@@ -12,9 +12,10 @@ if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] !== true){
     <title>Catalogue</title>
     <link rel="stylesheet" href="../css/catalogue.css">
 </head>
-
- <?php  include 'includes/navBar.php'; ?>
 <body>
+
+    <?php include("includes/navBar.php"); ?>
+
     <h1>Creer une formation</h1>
 
     <div class="formation">
@@ -92,6 +93,9 @@ if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] !== true){
                 <br>
                 <label for="dateLimite">Date limite d'inscription</label>
                 <input type="date" name="dateLimite" id="dateLimite">
+                <br>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
             </div>
              <br>
             <input type="submit" value="Valider">
